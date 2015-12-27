@@ -1,0 +1,6 @@
+baseurl = "http://tyamagu2.xyz"
+languageCode = "ja-jp"
+title = "tyamagu2.xyz"
+
+[author]
+    name = "Tomoki Yamaguchi"
