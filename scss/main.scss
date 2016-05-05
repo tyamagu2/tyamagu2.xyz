@@ -1,6 +1,7 @@
 .container {
   max-width: 900px;
   margin: 0 auto;
+  word-break: break-word;
 }
 
 p {
@@ -38,6 +39,11 @@ h1, h2, h3, h4, h5, h6, .header-links, #site-footer  {
   font-size: 80px;
   font-weight: 700;
 }
+@media (max-width: 900px) {
+  .site-title {
+    font-size: 40px;
+  }
+}
 
 .header-links {
   font-size: 25px;
@@ -53,4 +59,8 @@ h3 {
 
 .article-body {
   line-height: 200%;
+}
+
+img {
+  max-width: 100%;
 }
