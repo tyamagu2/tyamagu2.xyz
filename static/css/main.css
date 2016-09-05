@@ -11,6 +11,9 @@ li {
   color: #444;
   font-size: 16px; }
 
+blockquote p {
+  color: #888; }
+
 .article-header {
   padding-bottom: 30px; }
 
