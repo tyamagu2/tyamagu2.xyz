@@ -14,5 +14,5 @@ hugo undraft content/articles/title.md
 scss scss/main.scss:static/css/main.css
 
 # Preview
-
+hugo server
 ```
