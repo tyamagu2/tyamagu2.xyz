@@ -34,7 +34,7 @@ Whether the feature should be made of word or character n-grams. Option ‘char_
 If a callable is passed it is used to extract the sequence of features out of the raw, unprocessed input.
 ...
 
-例えば以下の `WordDividor` のようなクラスを作って、`extract_words` インスタンスメソッドを `CountVector` のコンストラクタに `analyzer` 引数として渡す。
+例えば以下の `WordDividor` のようなクラスを作って、`extract_words` インスタンスメソッドを `CountVectorizer` のコンストラクタに `analyzer` 引数として渡す。
 
 ```
 import MeCab
@@ -101,7 +101,7 @@ if __name__ == '__main__':
 あと、この例ではやってないけど、[mecab-ipadic-neologd](https://github.com/neologd/mecab-ipadic-neologd) を使うようにしたり、
 [この辺](https://github.com/neologd/mecab-ipadic-neologd/wiki/Regexp)を参考にテキストを事前に正規化したりすると良いと思う。
 
-一つ注意点として、この `CountVector` のインスタンスはそのままではシリアライズできない。
+一つ注意点として、この `CountVectorizer` のインスタンスはそのままではシリアライズできない。
 いろいろ調べたところ、`WordDividor` のインスタンスメソッドを保持しているのが問題らしい。
 `pickle` だけじゃなくて、`dill` みたいなライブラリを使っても同様だった。
 
@@ -110,10 +110,10 @@ if __name__ == '__main__':
 そうすると今度は `analyzer` の呼び出しのたびに `Tagger` の初期化が走ってとても時間がかかる。
 この辺、なんかうまい解決策があれば良いのだけど。
 
-いちおう対策として、`CountVector` のインスタンスをシリアライズする代わりに、`vocabulary_` アトリビュートをシリアライズして保存しておく方法がある。
-デシリアライズ時は `CountVector` のコンストラクタの `vocabulary` 引数にデシリアライズした `vocabulary_` を、
+いちおう対策として、`CountVectorizer` のインスタンスをシリアライズする代わりに、`vocabulary_` アトリビュートをシリアライズして保存しておく方法がある。
+デシリアライズ時は `CountVectorizer` のコンストラクタの `vocabulary` 引数にデシリアライズした `vocabulary_` を、
 `analyzer` 引数にはシリアライズ時と同じセットアップした `WordDividor` インスタンスの `extract_words` を渡すようにすれば、
-同じ状態の `CountVector` が作れる。
+同じ状態の `CountVectorizer` が作れる。
 
 ### テキスト以外の特徴量も使うにはどうすればよいのか？
 
