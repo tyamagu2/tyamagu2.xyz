@@ -54,4 +54,8 @@ h3 {
 img {
   max-width: 100%; }
 
+.social-button {
+  float: left;
+  margin-left: 10px; }
+
 /*# sourceMappingURL=main.css.map */
